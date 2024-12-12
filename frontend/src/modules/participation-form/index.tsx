@@ -77,7 +77,7 @@ export const ParticipationForm: FC<IParticipationFormProps> = ({ }) => {
         { element: ShareForm, form: sharedForm }
     ]
 
-    const [stage, setStage] = useState<number>(2)
+    const [stage, setStage] = useState<number>(1)
 
 
     return (
