@@ -1,0 +1,36 @@
+.block {
+    padding: 100px 220px;
+    background-image: url('@/assets/images/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+.logo {
+    padding-bottom: 95px;
+}
+
+.title {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 40px;
+    text-transform: uppercase;
+    margin-bottom: 45px;
+}
+.info {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 20px;
+    display: block;
+    width: 445px;
+    line-height: 1.5;
+    /* font-weight: 700; */
+    /* font-size: 40px; */
+    /* text-transform: uppercase; */
+    /* margin-bottom: 45px; */
+}
+
+.rocket {
+    position: absolute;
+    top: 30%;
+    right: 15%;
+}

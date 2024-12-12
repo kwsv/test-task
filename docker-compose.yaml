@@ -1,0 +1,40 @@
+version: '1'
+services:
+    frontend:
+        container_name: frontend
+        image: zodler/test-task-frontend:latest
+        build:
+            context: ./frontend
+            args:
+                BACKEND_DOMAIN: "${BACKEND_DOMAIN}"
+                BACKEND_PORT: "${BACKEND_PORT}"
+        ports:
+            - "${FRONTEND_PORT}:80"
+
+    backend:
+        container_name: backend
+        image: zodler/test-task-backend:latest
+        command: bash -c 'while !</dev/tcp/postgres/5432; do sleep 1; done; uvicorn main:app --host 0.0.0.0'
+        build: ./backend
+        depends_on:
+            - postgres
+        ports:
+            - "${BACKEND_PORT}:8000"
+        environment:
+            - FRONTEND_DOMAIN=${FRONTEND_DOMAIN}
+            - FRONTEND_PORT=${FRONTEND_PORT}
+            - POSTGRES_BD_USER=${POSTGRES_BD_USER}
+            - POSTGRES_BD_PASSWORD=${POSTGRES_BD_PASSWORD}
+            - POSTGRES_BD_HOST_DOMAIN=${POSTGRES_BD_HOST_DOMAIN}
+            - POSTGRES_BD_HOST_PORT=postgres
+            - POSTGRES_BD_NAME=${POSTGRES_BD_NAME}
+    
+    postgres:
+        container_name: postgres
+        image: postgres
+        environment:
+            - POSTGRES_DB=${POSTGRES_BD_NAME}
+            - POSTGRES_USER=${POSTGRES_BD_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_BD_PASSWORD}
+        ports:
+            - ${POSTGRES_BD_HOST_PORT}:5432

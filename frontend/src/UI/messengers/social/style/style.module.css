@@ -1,0 +1,22 @@
+.facebook {
+    background: linear-gradient(to right bottom, #70ADFF 0%, #1977F3 50%, #064BA6 100%);
+    box-shadow: -10px 0 20px #003ADA35
+                0 4px 5px #000C2350;
+}
+.vk {
+    background: linear-gradient(to right bottom, #60AAFF 0%, #2787F5 50%, #005CC6 100%);
+    box-shadow: -8px -5px 20px #0077FF50
+                0 4px 5px #000C2350;
+}
+
+.twitter {
+    background: linear-gradient(to right bottom, #73CAFF 0%, #1DA1F2 50%, #007CC8 100%);
+    box-shadow: -8px 3 20px #009EFF40
+                0 4px 5px #000C2350;
+}
+
+.instagram {
+    background: linear-gradient(to right bottom, #D82D7E 0%, #DF406C 50%, #FA8F21 100%);
+    box-shadow: -10px 3 20px #FF006C33
+                0 4px 5px #000C2350;
+}

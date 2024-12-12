@@ -1,0 +1,21 @@
+.block {
+    
+    background: conic-gradient(
+        from 102deg at 45% 55%,
+        #2B65FB 00%, #2B65FB 41%, 
+        #28D8FF 47%, #28D8FF 92%,
+        #85FFB6 94%, #85FFB6 95%,
+        #17C213 98%,#17C213 100%
+    );
+    /* background: conic-gradient(
+        from 102deg at 45% 55%,
+        #2B65FB 0%, 
+        #28D8FF 41%, #28D8FF 92%,
+        #85FFB6 90%, 
+        #17C213 100%
+    ); */
+    background-position-y: -5px;
+    letter-spacing: 1px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

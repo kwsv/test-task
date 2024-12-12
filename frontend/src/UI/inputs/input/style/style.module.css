@@ -1,0 +1,61 @@
+@property --input-color1 {
+    syntax: '<color>';
+    initial-value: #62FF82;
+    inherits: false;
+}
+
+@property --input-color2 {
+    syntax: '<color>';
+    initial-value: #29BA47;
+    inherits: false;
+}
+
+
+.hasError .border {
+    --input-color1: #FF1E1E;
+    --input-color2: #C7971C;
+}
+
+
+.block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input {
+    outline: none;
+    padding: 16px 14px;
+    font-size: 14px;
+    background-color: #051237;
+    border: none;
+    color: #ffffff;
+    width: 100%;
+    border-radius: 6px;
+    font-weight: 300;
+}
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s;
+}
+
+.border {
+    border-radius: 6px;
+    padding: 1px;
+    transition: --input-color1 0.2s, --input-color2 0.2s;
+    background: linear-gradient(45deg, var(--input-color1) 0%, var(--input-color2) 100%);
+}
+
+.error {
+    color: #FC1E1F;
+    font-weight: 300;
+    font-size: 9px;
+    height: 16px;
+}
+
+.input::placeholder {
+    color: #ffffff;
+}

@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "plugins": [{ "name": "typescript-plugin-css-modules" }],
+        "outDir": "./dist/",
+        "noImplicitAny": true,
+        "module": "ESNext",
+        "target": "es5",
+        "jsx": "react-jsx",
+        "allowJs": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "baseUrl": "./src",
+        "paths": {
+            "@/*": ["./*"],
+            "@UI": ["UI"],
+            "@components": ["components"],
+            "@modules/*": ["modules/*"],
+            "@pages/*": ["pages/*"],
+            "@app": ["app"],
+        }
+    },
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    }
+}

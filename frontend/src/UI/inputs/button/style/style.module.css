@@ -1,0 +1,41 @@
+@property --button-color1 {
+    syntax: '<color>';
+    initial-value: #2BBB49;
+    inherits: false;
+}
+
+@property --button-color2 {
+    syntax: '<color>';
+    initial-value: #1682ac;
+    inherits: false;
+}
+
+
+.block {
+    padding: 14px;
+    border-radius: 12px;
+    background: linear-gradient(to right, var(--button-color1) 0%, var(--button-color2) 100%);
+    font-size: 16px;
+    font-weight: 800;
+    max-width: 270px;
+    width: 100%;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: --button-color1 0.2s, --button-color2 0.2s;
+
+}
+
+.block:hover {
+    --button-color1: #00BAE2;
+    --button-color2: #047ede;
+}
+
+.block:active {
+    background: linear-gradient(to right, #434C9C 0%, #1b56cf 100%);
+}
+
+.block:disabled {
+    cursor: not-allowed;
+    filter: brightness(0.70);
+}
