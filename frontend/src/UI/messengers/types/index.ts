@@ -5,6 +5,6 @@ export interface IBaseMessengerProps extends IMessengerProps {
 }
 
 export interface IMessengerProps {
-    onClick?: () => void
+    onShare?: () => void
     url: string
 }

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { EmailForm } from './components/email-form';
 import { ShareForm } from './components/share-form';
 import { checkUnregisteredUser, registerUser } from './api';
-import { emailValidation } from './validation';
+import { emailFormValidationSchema, sharedFormValidationSchema } from './validation';
 import css from './styles/style.module.css'
 
 
@@ -23,17 +23,12 @@ export const ParticipationForm: FC<IParticipationFormProps> = ({ }) => {
             email: '',
         },
         validateOnChange: true,
-        validate: (values) => {
-            const errors: Partial<Record<keyof typeof values, string>> = {}
-            if (!values.email || emailValidation(values.email)) {
-                errors.email = 'Неверный формат почты'
-            }
-            return errors
-        },
-        onSubmit: ({ email }, { setFieldError }) => {
+        validationSchema: emailFormValidationSchema,
+        onSubmit: ({ email }, { setFieldError, setErrors }) => {
             checkUnregisteredUser(email)
                 .then(
                     (response) => {
+                        
                         if (response.data.status) {
                             setStage((s) => s + 1)
                         }
@@ -43,7 +38,7 @@ export const ParticipationForm: FC<IParticipationFormProps> = ({ }) => {
                     }
                 )
                 .catch((response) => {
-                    setFieldError('email', response.response.data?.detail?.[0]?.ctx?.reason)
+                    setErrors(response?.response?.data?.errors ?? {})
                 })
         },
     });
@@ -52,21 +47,15 @@ export const ParticipationForm: FC<IParticipationFormProps> = ({ }) => {
         initialValues: {
             shared: false,
         },
-        validateOnChange: true,
-        validate: (values) => {
-
-            const errors: Partial<Record<keyof typeof values, string>> = {}
-            if (!values.shared) {
-                errors.shared = 'Надо все же поделиться'
-            }
-            return errors
-        },
-        
-        onSubmit: () => {
+        validationSchema: sharedFormValidationSchema,
+        onSubmit: (values) => {
             registerUser(emailForm.values.email)
                 .then((response) => {
                     localStorage.setItem('user_id', response.data.id)
                     navigate('/', { state: true })
+                })
+                .catch(() => {
+                    
                 })
         },
     });

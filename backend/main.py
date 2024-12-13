@@ -1,4 +1,6 @@
 import os
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from database.init import init_db
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import Depends, FastAPI, HTTPException
@@ -6,7 +8,6 @@ from dto.user import UserCreateDTO, UserDTO
 from database.postgres import db
 from database.connection import db_state_default
 from services.user import create_user, get_user_by_email
-
 
 
 
@@ -40,6 +41,26 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc):
+
+    errors = { 'body': {} }
+    for error in exc.errors():
+        location = error['loc']
+        loc = errors
+        for part in location[:-1]:
+            nextLoc = loc.get(part)
+            if not nextLoc:
+                obj = {}
+                loc[part] = obj
+                loc = obj
+            else:
+                loc = nextLoc
+        loc[location[-1]] = error['msg']
+        
+    return JSONResponse({ 'errors': errors['body'] }, status_code=400)
+
 
 @app.post("/users/", response_model=UserDTO, dependencies=[Depends(get_db)])
 def create_user_url(user: UserCreateDTO):

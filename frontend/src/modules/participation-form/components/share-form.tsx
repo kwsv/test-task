@@ -8,7 +8,7 @@ export const ShareForm: FC<IChildFormProps> = ({ number, form, ...props }) => {
     return (
         <Form tag={String(number)} title='Поделись с друзьями' onSubmit={form.handleSubmit} {...props}>
             <div className={css.messengers}>
-                <MessengersBlock onClick={() => form.setFieldValue('shared', true)} />
+                <MessengersBlock onShare={() => form.setFieldValue('shared', true)} />
             </div>
             <span className={css.error}>{form.touched.shared ? form.errors.shared as string : ''}</span>
             <Button type='submit'>Я поделился</Button>
