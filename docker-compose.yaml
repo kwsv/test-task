@@ -25,8 +25,8 @@ services:
             - FRONTEND_PORT=${FRONTEND_PORT}
             - POSTGRES_BD_USER=${POSTGRES_BD_USER}
             - POSTGRES_BD_PASSWORD=${POSTGRES_BD_PASSWORD}
-            - POSTGRES_BD_HOST_DOMAIN=${POSTGRES_BD_HOST_DOMAIN}
-            - POSTGRES_BD_HOST_PORT=postgres
+            - POSTGRES_BD_HOST_DOMAIN=postgres
+            - POSTGRES_BD_HOST_PORT=${POSTGRES_BD_HOST_PORT}
             - POSTGRES_BD_NAME=${POSTGRES_BD_NAME}
     
     postgres:
