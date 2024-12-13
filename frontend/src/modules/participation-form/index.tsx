@@ -1,18 +1,18 @@
 import { FC, useState } from 'react';
 import { useFormik } from 'formik';
-import { useNavigate } from 'react-router-dom';
 import { EmailForm } from './components/email-form';
 import { ShareForm } from './components/share-form';
 import { checkUnregisteredUser, registerUser } from './api';
 import { emailFormValidationSchema, sharedFormValidationSchema } from './validation';
 import css from './styles/style.module.css';
+import { useAppDispatch, login } from '@/store';
 
 interface IParticipationFormProps {
 
 }
 
 export const ParticipationForm: FC<IParticipationFormProps> = ({ }) => {
-    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const emailForm = useFormik({
         initialValues: {
@@ -43,8 +43,7 @@ export const ParticipationForm: FC<IParticipationFormProps> = ({ }) => {
         onSubmit: () => {
             registerUser(emailForm.values.email)
                 .then((response) => {
-                    localStorage.setItem('user_id', response.data.id);
-                    navigate('/', { state: true });
+                    dispatch(login(response.data.id));
                 })
                 .catch(() => {
 

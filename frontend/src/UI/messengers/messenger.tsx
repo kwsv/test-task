@@ -10,9 +10,8 @@ export const BaseMessenger: FC<IBaseMessengerProps> = ({ image, className, url, 
             target='_blank'
             onClick={onShare}
             onAuxClick={(event) => {
-                console.log(event.button);
                 if (event.button === 1) {
-                    onShare();
+                    onShare?.();
                 }
             }}
             className={classNames(css.block, className)}

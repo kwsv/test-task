@@ -22,7 +22,7 @@ export const messengers = [
     {
         element: Instagram,
         props: {
-            url: '#',
+            url: '',
         },
     },
 ];

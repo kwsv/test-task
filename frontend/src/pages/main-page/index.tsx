@@ -2,14 +2,13 @@ import { FC } from 'react';
 import { MainLayout } from '@components';
 import { Button } from '@UI';
 import { ParticipationForm } from '@modules/participation-form';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppSelector, useAppDispatch, logout } from '@/store';
 
 export const MainPage: FC = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
-    const userId = localStorage.getItem('user_id');
+    const dispatch = useAppDispatch();
+    const isRegistered = useAppSelector((state) => state.user.isRegistered);
 
-    if (!location.state && !userId) {
+    if (!isRegistered) {
         return (
             <MainLayout title={{ text: 'все круто! теперь', colored_text: 'выигрывай путешествие' }} info='Чтобы участвовать в  розыгрыше путешествия, оставь актуальную почту и поделись с друзьями'>
                 <ParticipationForm />
@@ -21,8 +20,7 @@ export const MainPage: FC = () => {
                 <div style={{ marginTop: 65 }}>
                     <Button onClick={
                         () => {
-                            localStorage.removeItem('user_id');
-                            navigate('/', { state: null });
+                            dispatch(logout());
                         }
                     }
                     >
