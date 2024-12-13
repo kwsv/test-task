@@ -1,3 +1,3 @@
-export * from './colored-text'
-export * from './inputs'
-export * from './messengers'
+export * from './colored-text';
+export * from './inputs';
+export * from './messengers';

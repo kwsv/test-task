@@ -15,7 +15,7 @@ const WebpackConfig = (
         port: port ?? 3000,
         paths,
     };
-    
+
     return {
         mode: mode ?? 'development',
         entry: paths.entry,

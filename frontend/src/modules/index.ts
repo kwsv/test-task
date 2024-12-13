@@ -1,1 +1,1 @@
-export * from './participation-form'
+export * from './participation-form';

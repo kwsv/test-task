@@ -1,7 +1,6 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from "react-router";
-import App from '@app';
-
+import { BrowserRouter } from 'react-router';
+import { App } from '@app';
 
 const root = document.getElementById('root') as HTMLElement;
 
@@ -14,5 +13,5 @@ const react = createRoot(root);
 react.render(
     <BrowserRouter>
         <App />
-    </BrowserRouter>
+    </BrowserRouter>,
 );

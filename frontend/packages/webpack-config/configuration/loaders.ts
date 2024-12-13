@@ -12,7 +12,6 @@ const LoadersConfig = ({ isDev }: ConfigProps): LoadersConfigType => {
         ],
     };
 
-
     const assetsLoader = {
         test: /\.(jpg|png|svg|gif)$/,
         type: 'asset/resource',

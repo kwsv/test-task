@@ -5,5 +5,5 @@ export const emailFormValidationSchema = Yup.object().shape({
 });
 
 export const sharedFormValidationSchema = Yup.object().shape({
-    shared: Yup.boolean().isTrue('Надо все же поделиться')
+    shared: Yup.boolean().isTrue('Надо все же поделиться'),
 });

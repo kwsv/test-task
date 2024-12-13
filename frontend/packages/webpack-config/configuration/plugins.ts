@@ -10,9 +10,9 @@ const ConfigPlugins = ({ paths, isDev, isProd }: ConfigProps): PluginsConfigType
             template: paths.html,
         }),
         new DefinePlugin({
-            'process.env.BACKEND_DOMAIN': JSON.stringify(process?.env?.BACKEND_DOMAIN ?? 'http://localhost') ,
-            'process.env.BACKEND_PORT': JSON.stringify(process?.env?.BACKEND_PORT ?? '8000')
-        })
+            'process.env.BACKEND_DOMAIN': JSON.stringify(process?.env?.BACKEND_DOMAIN ?? 'http://localhost'),
+            'process.env.BACKEND_PORT': JSON.stringify(process?.env?.BACKEND_PORT ?? '8000'),
+        }),
     ];
     if (isProd) {
         plugins.push(new MiniCssExtractPlugin({

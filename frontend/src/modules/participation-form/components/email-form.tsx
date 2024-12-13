@@ -1,16 +1,16 @@
-import { Form } from '@components'
-import { Input, Button } from '@UI'
-import { FC } from 'react'
-import { IChildFormProps } from '../types/form'
-
+import { Form } from '@components';
+import { Input, Button } from '@UI';
+import { FC } from 'react';
+import { IChildFormProps } from '../types/form';
 
 export const EmailForm: FC<IChildFormProps> = ({ number, form, ...props }) => {
-
-
     return (
-        <Form tag={String(number)} onSubmit={form.handleSubmit} 
+        <Form
+            tag={String(number)}
+            onSubmit={form.handleSubmit}
             title='Оставь актуальный email'
-            {...props}>
+            {...props}
+        >
             <Input
                 touched={form.touched.email as boolean}
                 error={form.errors.email as string}
@@ -20,7 +20,10 @@ export const EmailForm: FC<IChildFormProps> = ({ number, form, ...props }) => {
                 name='email'
                 placeholder='Ввести email'
             />
-            <Button type='submit'>Я оставил</Button>
+
+            <Button type='submit'>
+                Я оставил
+            </Button>
         </Form>
-    )
-}
+    );
+};
