@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 export const emailFormValidationSchema = Yup.object().shape({
-    email: Yup.string().matches(/^(?![0-9])([0-9aA-zZ]{2,}(?:\.?))+[0-9aA-zZ]+@[aA-zZ]{2,}\.[aA-zZ]{2,}$/, 'Неверный формат почты').required('Неверный формат почты'),
+    email: Yup.string().matches(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Неверный формат почты').required('Неверный формат почты'),
 });
 
 export const sharedFormValidationSchema = Yup.object().shape({
